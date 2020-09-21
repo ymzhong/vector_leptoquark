@@ -1,0 +1,120 @@
+
+M$ModelName = "vleptoquark_tta";
+
+(* 
+   
+   This is a model in which a vector leptoquark couples to up type
+   quarks and charged leptons. More specifically, the leptoquark couples to
+   the vector combination Uc dagger Ec, thus vlq is an SU(2)_w singlet.
+   The vlq quantum numbers are (SU(3),SU(2),Y)
+
+    vul = (3, 1, 5/3) and the electric charge of 5/3
+
+   the decay is vul > t ta+
+*)
+
+M$Information = {Authors -> {"Y.-M. Zhong"}, 
+             Version -> "1.0",
+             Date -> "06. 09. 2020",
+             Institutions -> {"UChicago"},
+             Emails -> {"ymzhong@kicp.uchicago.edu"}};
+
+
+(* External parameter: leptoquark coupling *)
+
+M$Parameters = {
+ 
+    ytta == {Value -> 1.0,
+           InteractionOrder -> {LambdaOrder,1},
+	   TeX -> Subscript[y,lq],
+	   ParameterType -> External,
+	   ParameterName -> Ylq,
+	   Description -> "leptoquark coupling to t ta"
+            },
+
+
+    tkappa == {Value -> 0,
+           InteractionOrder -> {QCD,0},
+	   TeX -> Subscript[k,T],
+	   ParameterType -> External,
+           ComplexParameter -> False,
+	   ParameterName -> Tkappa,
+	   Description -> "Tkappa"
+            },
+
+    xkappa == {Value -> 0,
+           InteractionOrder -> {QCD,0},
+	   TeX -> Subscript[k,x],
+	   ParameterType -> External,
+           ComplexParameter -> False,
+	   ParameterName -> xkappa,
+	   Description -> "xkappa"
+            },
+
+  (* Internal parameter: leptoquark width *)
+
+
+  Wvlq == { 
+    ParameterType -> Internal, 
+    Value         -> Mvlq*ytta^2*(1-mt^2/Mvlq^2)^2*(1+mt^2/(2*Mvlq^2))/(24*Pi), 
+    TeX           -> Subscript[W,vlq], 
+    Description   -> "vector leptoquark width"
+  },
+
+  Wgp == { 
+    ParameterType -> Internal, 
+    Value         -> Mvlq*ylq^2/(24*Pi), 
+    TeX           -> Subscript[W,gp], 
+    Description   -> "gluon prime width"
+  }
+
+};
+
+
+
+M$ClassesDescription = {
+
+   V[101] == {ClassName -> vul,
+       SelfConjugate -> False,
+       Indices -> {Index[Colour]},
+       Mass ->    {Mvlq, 1000},
+           Width ->   {Wvlq, Internal},
+             QuantumNumbers -> {Q -> 5/3, LeptonNumber -> -1},
+             PropagatorLabel -> "vul",
+             PropagatorType -> Sine,
+             PropagatorArrow -> Forward,
+             PDG -> 1202,
+             FullName -> "vector ue-leptoquark" 
+              },           
+
+   V[110] == {ClassName -> gp,
+ 	     SelfConjugate -> True,
+	     Indices       -> {Index[Gluon]},
+	     Mass ->    {Mgp, 1000},
+     	     Width ->   {Wgp, Internal},
+      	     PropagatorLabel -> "gp",
+      	     PropagatorType -> C,
+      	     PropagatorArrow -> None,
+      	     PDG -> 1210,
+      	     FullName -> "gluon prime" 
+       	      }
+};
+
+
+(* the Lagrangian *)
+
+
+(* kinetic term of LQ*)
+LvlqKin := -1/2((DC[vulbar[mu,k],nu]+I gs gp[nu,aa] T[aa,l,k] vulbar[mu,l])-(DC[vulbar[nu,k],mu]+I gs gp[mu,aa] T[aa,l,k] vulbar[nu,l]))((DC[vul[mu,k],nu]-I gs gp[nu,aa] T[aa,k,l] vul[mu,l])-(DC[vul[nu,k],mu]-I gs gp[mu,aa] T[aa,k,l] vul[nu,l])) + Mvlq^2 vulbar[mu,k]vul[mu,k] -I (1+tkappa) gs FS[G,mu,nu,a] vulbar[mu,k] T[a,k,l] vul[nu,l];
+(* kinetic term of gluon prime*)
+LgpKin := - 1/4 (DC[gp[nu,aa],mu]-DC[gp[mu,aa],nu])*(DC[gp[nu,aa],mu]-DC[gp[mu,aa],nu]) + 1/2 Mgp^2 gp[mu,aa]gp[mu,aa] - I (1+xkappa) gs (DC[gp[nu,aa],mu]-DC[gp[mu,aa],nu]) vulbar[mu,k] T[aa,k,l] vul[nu,l] - gs gp[mu,aa] ( ubar[s,k] Ga[mu,s,r] T[aa,k,l] u[r,l] + dbar[s,k] Ga[mu,s,r] T[aa,k,l] d[r,l] + sbar[s,k] Ga[mu,s,r] T[aa,k,l] s[r,l] + cbar[s,k] Ga[mu,s,r] T[aa,k,l] c[r,l] + bbar[s,k] Ga[mu,s,r] T[aa,k,l] b[r,l] ) ;
+(* interaction term*)
+Lvlqfermions := ytta vul[mu,k] tbar[s,k] Ga[mu,s,r] ProjM[r,t] ta[t];
+
+Llq :=  LvlqKin + LgpKin + Lvlqfermions + HC[Lvlqfermions];
+
+
+
+
+
+
