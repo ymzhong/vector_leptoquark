@@ -63,7 +63,7 @@ M$Parameters = {
 
   Wvlq == { 
     ParameterType -> Internal, 
-    Value         -> Mvlq*(yte^2 + ytmu^2)*(1-mt^2/Mvlq^2)^2*(1+mt^2/(2*Mvlq^2))/(24*Pi), 
+    Value         -> Mvlq*(yte^2 + ytmu^2)*(1-MT^2/Mvlq^2)^2*(1+MT^2/(2*Mvlq^2))/(24*Pi), 
     TeX           -> Subscript[W,vlq], 
     Description   -> "vector leptoquark width"
   },
