@@ -350,7 +350,7 @@ CKM3x3 = Parameter(name = 'CKM3x3',
 Wvlq = Parameter(name = 'Wvlq',
                  nature = 'internal',
                  type = 'real',
-                 value = '((1 - mt**2/Mvlq**2)**2*(1 + mt**2/(2.*Mvlq**2))*Mvlq*Ylq**2)/(24.*cmath.pi)',
+                 value = '((1 - MT**2/Mvlq**2)**2*(1 + MT**2/(2.*Mvlq**2))*Mvlq*Ylq**2)/(24.*cmath.pi)',
                  texname = 'W_{\\text{vlq}}')
 
 Wgp = Parameter(name = 'Wgp',
