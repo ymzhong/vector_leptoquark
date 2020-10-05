@@ -9,4 +9,4 @@ Please acknowledge [JHEP 10 (2017) 097](https://link.springer.com/article/10.100
 
 For any questions on the models, please contact Martin Schmaltz (schmaltz@bu.edu) or Yiming Zhong (ymzhong@kicp.uchicago.edu).
 
-<a>[1]</a>: xkappa is kappa_s in equation C.5 of [JHEP 10 (2017) 097](https://link.springer.com/article/10.1007/JHEP10(2017)097).
+<a>[1]</a>: ``xkappa`` is denoted as ``kappa_s`` in equation C.5 of [JHEP 10 (2017) 097](https://link.springer.com/article/10.1007/JHEP10(2017)097).
