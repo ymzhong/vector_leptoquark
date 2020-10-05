@@ -356,7 +356,7 @@ Wvlq = Parameter(name = 'Wvlq',
 Wgp = Parameter(name = 'Wgp',
                 nature = 'internal',
                 type = 'real',
-                value = '(Mvlq*ylq**2)/(24.*cmath.pi)',
+                value = '(Mvlq*Ylq**2)/(24.*cmath.pi)',
                 texname = 'W_{\\text{gp}}')
 
 MW = Parameter(name = 'MW',
