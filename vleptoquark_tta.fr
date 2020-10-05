@@ -63,7 +63,7 @@ M$Parameters = {
 
   Wgp == { 
     ParameterType -> Internal, 
-    Value         -> Mvlq*ylq^2/(24*Pi), 
+    Value         -> Mvlq*ytta^2/(24*Pi), 
     TeX           -> Subscript[W,gp], 
     Description   -> "gluon prime width"
   }
