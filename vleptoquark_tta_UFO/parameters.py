@@ -1,6 +1,6 @@
 # This file was automatically created by FeynRules 2.3.36
 # Mathematica version: 12.0.0 for Linux x86 (64-bit) (April 7, 2019)
-# Date: Sun 6 Sep 2020 13:35:23
+# Date: Tue 27 Oct 2020 14:35:43
 
 
 
@@ -265,6 +265,14 @@ WW = Parameter(name = 'WW',
                lhablock = 'DECAY',
                lhacode = [ 24 ])
 
+WTA = Parameter(name = 'WTA',
+                nature = 'external',
+                type = 'real',
+                value = 2.265e-12,
+                texname = '\\text{WTA}',
+                lhablock = 'DECAY',
+                lhacode = [ 15 ])
+
 WT = Parameter(name = 'WT',
                nature = 'external',
                type = 'real',
@@ -350,13 +358,13 @@ CKM3x3 = Parameter(name = 'CKM3x3',
 Wvlq = Parameter(name = 'Wvlq',
                  nature = 'internal',
                  type = 'real',
-                 value = '((1 - mt**2/Mvlq**2)**2*(1 + mt**2/(2.*Mvlq**2))*Mvlq*Ylq**2)/(24.*cmath.pi)',
+                 value = '((1 - MT**2/Mvlq**2)**2*(1 + MT**2/(2.*Mvlq**2))*Mvlq*Ylq**2)/(24.*cmath.pi)',
                  texname = 'W_{\\text{vlq}}')
 
 Wgp = Parameter(name = 'Wgp',
                 nature = 'internal',
                 type = 'real',
-                value = '(Mvlq*ylq**2)/(24.*cmath.pi)',
+                value = '(Mvlq*Ylq**2)/(24.*cmath.pi)',
                 texname = 'W_{\\text{gp}}')
 
 MW = Parameter(name = 'MW',

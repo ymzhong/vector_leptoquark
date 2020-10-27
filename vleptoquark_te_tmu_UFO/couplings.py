@@ -1,6 +1,6 @@
 # This file was automatically created by FeynRules 2.3.36
 # Mathematica version: 12.0.0 for Linux x86 (64-bit) (April 7, 2019)
-# Date: Mon 1 Jun 2020 21:30:28
+# Date: Tue 27 Oct 2020 14:21:09
 
 
 from object_library import all_couplings, Coupling
@@ -198,66 +198,62 @@ GC_47 = Coupling(name = 'GC_47',
                  order = {'QED':1})
 
 GC_48 = Coupling(name = 'GC_48',
+                 value = 'complex(0,1)*Ylq',
+                 order = {'LambdaOrder':1})
+
+GC_49 = Coupling(name = 'GC_49',
                  value = '-((complex(0,1)*ym)/cmath.sqrt(2))',
                  order = {'QED':1})
 
-GC_49 = Coupling(name = 'GC_49',
+GC_50 = Coupling(name = 'GC_50',
                  value = '-((complex(0,1)*ys)/cmath.sqrt(2))',
                  order = {'QED':1})
 
-GC_50 = Coupling(name = 'GC_50',
+GC_51 = Coupling(name = 'GC_51',
                  value = '-((complex(0,1)*yt)/cmath.sqrt(2))',
                  order = {'QED':1})
 
-GC_51 = Coupling(name = 'GC_51',
+GC_52 = Coupling(name = 'GC_52',
                  value = '-((complex(0,1)*ytau)/cmath.sqrt(2))',
                  order = {'QED':1})
 
-GC_52 = Coupling(name = 'GC_52',
-                 value = 'complex(0,1)*Yte',
-                 order = {'LambdaOrder':1})
-
 GC_53 = Coupling(name = 'GC_53',
-                 value = 'complex(0,1)*Ytmu',
-                 order = {'LambdaOrder':1})
-
-GC_54 = Coupling(name = 'GC_54',
                  value = '-((complex(0,1)*yup)/cmath.sqrt(2))',
                  order = {'QED':1})
 
-GC_55 = Coupling(name = 'GC_55',
+GC_54 = Coupling(name = 'GC_54',
                  value = '(ee*complex(0,1)*complexconjugate(CKM1x1))/(sw*cmath.sqrt(2))',
                  order = {'QED':1})
 
-GC_56 = Coupling(name = 'GC_56',
+GC_55 = Coupling(name = 'GC_55',
                  value = '(ee*complex(0,1)*complexconjugate(CKM1x2))/(sw*cmath.sqrt(2))',
                  order = {'QED':1})
 
-GC_57 = Coupling(name = 'GC_57',
+GC_56 = Coupling(name = 'GC_56',
                  value = '(ee*complex(0,1)*complexconjugate(CKM1x3))/(sw*cmath.sqrt(2))',
                  order = {'QED':1})
 
-GC_58 = Coupling(name = 'GC_58',
+GC_57 = Coupling(name = 'GC_57',
                  value = '(ee*complex(0,1)*complexconjugate(CKM2x1))/(sw*cmath.sqrt(2))',
                  order = {'QED':1})
 
-GC_59 = Coupling(name = 'GC_59',
+GC_58 = Coupling(name = 'GC_58',
                  value = '(ee*complex(0,1)*complexconjugate(CKM2x2))/(sw*cmath.sqrt(2))',
                  order = {'QED':1})
 
-GC_60 = Coupling(name = 'GC_60',
+GC_59 = Coupling(name = 'GC_59',
                  value = '(ee*complex(0,1)*complexconjugate(CKM2x3))/(sw*cmath.sqrt(2))',
                  order = {'QED':1})
 
-GC_61 = Coupling(name = 'GC_61',
+GC_60 = Coupling(name = 'GC_60',
                  value = '(ee*complex(0,1)*complexconjugate(CKM3x1))/(sw*cmath.sqrt(2))',
                  order = {'QED':1})
 
-GC_62 = Coupling(name = 'GC_62',
+GC_61 = Coupling(name = 'GC_61',
                  value = '(ee*complex(0,1)*complexconjugate(CKM3x2))/(sw*cmath.sqrt(2))',
                  order = {'QED':1})
 
-GC_63 = Coupling(name = 'GC_63',
+GC_62 = Coupling(name = 'GC_62',
                  value = '(ee*complex(0,1)*complexconjugate(CKM3x3))/(sw*cmath.sqrt(2))',
                  order = {'QED':1})
 

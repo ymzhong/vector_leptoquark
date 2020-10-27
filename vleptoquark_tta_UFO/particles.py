@@ -1,6 +1,6 @@
 # This file was automatically created by FeynRules 2.3.36
 # Mathematica version: 12.0.0 for Linux x86 (64-bit) (April 7, 2019)
-# Date: Sun 6 Sep 2020 13:35:23
+# Date: Tue 27 Oct 2020 14:35:43
 
 
 from __future__ import division
@@ -233,7 +233,7 @@ ta__minus__ = Particle(pdg_code = 15,
                        spin = 2,
                        color = 1,
                        mass = Param.MTA,
-                       width = Param.ZERO,
+                       width = Param.WTA,
                        texname = 'ta-',
                        antitexname = 'ta+',
                        charge = -1,

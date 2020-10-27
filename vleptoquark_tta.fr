@@ -56,14 +56,14 @@ M$Parameters = {
 
   Wvlq == { 
     ParameterType -> Internal, 
-    Value         -> Mvlq*ytta^2*(1-mt^2/Mvlq^2)^2*(1+mt^2/(2*Mvlq^2))/(24*Pi), 
+    Value         -> Mvlq*ytta^2*(1-MT^2/Mvlq^2)^2*(1+MT^2/(2*Mvlq^2))/(24*Pi), 
     TeX           -> Subscript[W,vlq], 
     Description   -> "vector leptoquark width"
   },
 
   Wgp == { 
     ParameterType -> Internal, 
-    Value         -> Mvlq*ylq^2/(24*Pi), 
+    Value         -> Mvlq*ytta^2/(24*Pi), 
     TeX           -> Subscript[W,gp], 
     Description   -> "gluon prime width"
   }
