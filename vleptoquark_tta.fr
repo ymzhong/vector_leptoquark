@@ -109,7 +109,7 @@ LvlqKin := -1/2((DC[vulbar[mu,k],nu]+I gs gp[nu,aa] T[aa,l,k] vulbar[mu,l])-(DC[
 (* kinetic term of gluon prime*)
 LgpKin := - 1/4 (DC[gp[nu,aa],mu]-DC[gp[mu,aa],nu])*(DC[gp[nu,aa],mu]-DC[gp[mu,aa],nu]) + 1/2 Mgp^2 gp[mu,aa]gp[mu,aa] - I (1+xkappa) gs (DC[gp[nu,aa],mu]-DC[gp[mu,aa],nu]) vulbar[mu,k] T[aa,k,l] vul[nu,l] - gs gp[mu,aa] ( ubar[s,k] Ga[mu,s,r] T[aa,k,l] u[r,l] + dbar[s,k] Ga[mu,s,r] T[aa,k,l] d[r,l] + sbar[s,k] Ga[mu,s,r] T[aa,k,l] s[r,l] + cbar[s,k] Ga[mu,s,r] T[aa,k,l] c[r,l] + bbar[s,k] Ga[mu,s,r] T[aa,k,l] b[r,l] ) ;
 (* interaction term*)
-Lvlqfermions := ytta vul[mu,k] tbar[s,k] Ga[mu,s,r] ProjM[r,t] ta[t];
+Lvlqfermions := ytta vul[mu,k] tbar[s,k] Ga[mu,s,r] ProjP[r,t] ta[t];
 
 Llq :=  LvlqKin + LgpKin + Lvlqfermions + HC[Lvlqfermions];
 
