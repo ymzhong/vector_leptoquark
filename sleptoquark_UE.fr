@@ -1,0 +1,147 @@
+M$ModelName = "sleptoquark_UE";
+
+(*   
+   This is a model in which a scalar leptoquark couples to Uc Ec singlet. 
+   The leptoquark quantum numbers are (SU(3),SU(2),Y)
+
+   lq  =  (3, 1, -1/3) 
+
+   We name it as S1 (name under BRW convention)
+   Its electric charges are +1/3 respectively.
+   S1 decays t e-, t mu-, t ta-, c e-, c mu-, c ta-, u e-, u mu-, u ta-
+
+*)
+
+M$Information = {Authors -> {"Y.-M. Zhong"}, 
+             Version -> "0.5",
+             Date -> "19. 01. 2022",
+             Institutions -> {"KICP, UChicago"},
+             Emails -> {"ymzhong@kicp.uchicago.edu"}};
+
+(* External parameter: leptoquark coupling *)
+M$Parameters = {
+
+    (*leptoquark mass*)
+
+    MS == { 
+        ParameterType -> External,
+        Value         -> 1000.0,
+        Description   -> "LQ mass"
+       },
+
+    (*leptoquark coupling*)
+
+    yue == {Value -> 1.0,
+           InteractionOrder -> {LambdaOrder,1},
+	       TeX -> Subscript[y,ue],
+	   	   ParameterType -> External,
+     	   ComplexParameter -> True,
+	   	 	ParameterName -> Yue,
+	   		Description -> "coupling to u e"
+            },
+
+     yumu == {Value -> 1.0,
+       InteractionOrder -> {LambdaOrder,1},
+       TeX -> Subscript[y,umu],
+   	   ParameterType -> External,
+ 	   ComplexParameter -> True,
+   	 	ParameterName -> Yumu,
+   		Description -> "coupling to u mu"
+        },
+
+     yuta == {Value -> 1.0,
+       InteractionOrder -> {LambdaOrder,1},
+       TeX -> Subscript[y,uta],
+   	   ParameterType -> External,
+ 	      ComplexParameter -> True,
+   	 	  ParameterName -> Yuta,
+   		   Description -> "coupling to u ta"
+        },
+
+     yce == {Value -> 1.0,
+       InteractionOrder -> {LambdaOrder,1},
+       TeX -> Subscript[y,ce],
+   	   ParameterType -> External,
+ 	   ComplexParameter -> True,
+   	 	ParameterName -> Yce,
+   		Description -> "coupling to c e"
+        },
+
+     ycmu == {Value -> 1.0,
+       InteractionOrder -> {LambdaOrder,1},
+       TeX -> Subscript[y,cmu],
+   	   ParameterType -> External,
+ 	   ComplexParameter -> True,
+   	 	ParameterName -> Ycmu,
+   		Description -> "coupling to c mu"
+        },
+
+     ycta == {Value -> 1.0,
+       InteractionOrder -> {LambdaOrder,1},
+       TeX -> Subscript[y,cta],
+   	   ParameterType -> External,
+ 	   ComplexParameter -> True,
+   	 	ParameterName -> Ycta,
+   		Description -> "coupling to c ta"
+        },
+
+     yte == {Value -> 1.0,
+       InteractionOrder -> {LambdaOrder,1},
+       TeX -> Subscript[y,te],
+   	   ParameterType -> External,
+ 	   ComplexParameter -> True,
+   	 	ParameterName -> Yte,
+   		Description -> "coupling to t e"
+        },
+
+     ytmu == {Value -> 1.0,
+       InteractionOrder -> {LambdaOrder,1},
+       TeX -> Subscript[y,tmu],
+   	   ParameterType -> External,
+ 	   ComplexParameter -> True,
+   	 	ParameterName -> Ytmu,
+   		Description -> "coupling to t mu"
+        },
+
+     ytta == {Value -> 1.0,
+       InteractionOrder -> {LambdaOrder,1},
+       TeX -> Subscript[y,tta],
+   	   ParameterType -> External,
+ 	   ComplexParameter -> True,
+   	 	ParameterName -> Ytta,
+   		Description -> "coupling to t ta"
+        },
+
+      WS == { 
+      ParameterType -> Internal, 
+      Value         -> MS*(Abs[yte^2]+Abs[ytmu^2]+Abs[ytta^2])*(1 - MT^2/MS^2)^2/(16*Pi) + MS*(Abs[yce^2]+Abs[ycmu^2]+Abs[ycta^2]+Abs[yue^2]+Abs[yumu^2]+Abs[yuta^2])/(16*Pi), 
+      TeX           -> Subscript[W,S], 
+      Description   -> "LQ width"
+    	}
+  }
+
+
+M$ClassesDescription = {
+
+   S[100] == {ClassName -> S1,
+       SelfConjugate -> False,
+       Indices -> {Index[Colour]},
+       Mass ->    {MS, Internal},
+       Width ->   {WS, Internal},
+       QuantumNumbers -> {Q -> -1/3, LeptonNumber -> 1},
+       PropagatorLabel -> "S1",
+       PropagatorType -> D,
+       PropagatorArrow -> None,
+       PDG -> 1000,
+       FullName -> "scalar LQ S1" 
+        }
+   }
+
+(* the Lagrangian *)
+
+LlqKin := DC[S1bar[k], mu]DC[S1[k],mu] 	-   MS^2 S1bar[k]S1[k];
+
+
+LlqYuk  :=  yue S1bar[k] anti[CC[u]][s,k] ProjP[s,r] e[r] + yumu S1bar[k] anti[CC[u]][s,k] ProjP[s,r] mu[r] + yuta S1bar[k] anti[CC[u]][s,k] ProjP[s,r] ta[r] + yce S1bar[k] anti[CC[c]][s,k] ProjP[s,r] e[r] + ycmu S1bar[k] anti[CC[c]][s,k] ProjP[s,r] mu[r] + ycta S1bar[k] anti[CC[c]][s,k] ProjP[s,r] ta[r] + yte S1bar[k] anti[CC[t]][s,k] ProjP[s,r] e[r] + ytmu S1bar[k] anti[CC[t]][s,k] ProjP[s,r] mu[r] + ytta S1bar[k] anti[CC[t]][s,k] ProjP[s,r] ta[r];
+
+Llq :=  LlqKin + LlqYuk + HC[LlqYuk];
