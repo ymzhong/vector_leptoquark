@@ -3,7 +3,7 @@ M$ModelName = "vleptoquark_QL_triplet";
 
 (* 
    
-   This is a model in which a scalar leptoquark couples to Q^\dag L singlet. 
+   This is a model in which a vector leptoquark couples to Q^\dag L triplet. 
    The leptoquark quantum numbers are (SU(3),SU(2),Y)
 
    lq  =  (3 bar, 3, -2/3) 
