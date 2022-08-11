@@ -1,0 +1,191 @@
+
+M$ModelName = "vleptoquark_QL_triplet";
+
+(* 
+   
+   This is a model in which a scalar leptoquark couples to Q^\dag L singlet. 
+   The leptoquark quantum numbers are (SU(3),SU(2),Y)
+
+   lq  =  (3 bar, 3, -2/3) 
+
+   The model has three leptoquarks with the same mass
+   We name then as V1, V2, V3
+   Their electric charges are -5/3, -2/3, +1/3, respectively.
+   V1 decays tbar e-, V2 decays tbar ve and bbar e-, V3 decays to bbar ve
+
+*)
+
+M$Information = {Authors -> {"Y.-M. Zhong"}, 
+             Version -> "0.5",
+             Date -> "27. 06. 2022",
+             Institutions -> {"KICP, UChicago"},
+             Emails -> {"ymzhong@kicp.uchicago.edu"}};
+
+
+(* External parameter: leptoquark coupling *)
+
+M$Parameters = {
+
+    (*triplet mass*)
+    MV3 == { 
+        ParameterType -> External,
+        Value         -> 1000.0,
+        Description   -> "Triplet mass"
+       },
+
+    (*triplet coupling*)
+    y13 == {Value -> 0.1,
+           InteractionOrder -> {LambdaOrder,1},
+	       TeX -> Subscript[y,13],
+	       ParameterType -> External,
+           ComplexParameter -> True,
+	       ParameterName -> Y13,
+	       Description -> "leptoquark coupling between 1st gen lepton and 3rd gen quark"
+            },
+
+    y23 == {Value -> 0.1,
+       InteractionOrder -> {LambdaOrder,1},
+       TeX -> Subscript[y,23],
+       ParameterType -> External,
+       ComplexParameter -> True,
+       ParameterName -> Y23,
+       Description -> "leptoquark coupling between 2nd gen lepton and 3rd gen quark"
+        },
+
+    y33 == {Value -> 0.1,
+       InteractionOrder -> {LambdaOrder,1},
+       TeX -> Subscript[y,33],
+       ParameterType -> External,
+       ComplexParameter -> True,
+       ParameterName -> Y33,
+       Description -> "leptoquark coupling between 3rd gen lepton and 3rd gen quark"
+        },
+
+    (*other couplings*)
+    tkappa == {Value -> 0,
+           InteractionOrder -> {QCD,0},
+       TeX -> Subscript[k,T],
+       ParameterType -> External,
+           ComplexParameter -> False,
+       ParameterName -> Tkappa,
+       Description -> "Tkappa"
+            },
+
+    xkappa == {Value -> 0,
+           InteractionOrder -> {QCD,0},
+       TeX -> Subscript[k,x],
+       ParameterType -> External,
+           ComplexParameter -> False,
+       ParameterName -> xkappa,
+       Description -> "xkappa"
+            },
+
+    (*triplet width*)
+    WV1 == { 
+      ParameterType -> Internal, 
+      Value         -> MV3*(Abs[y13^2]+Abs[y23^2]+Abs[y33^2])*(1 - MT^2/MV3^2)^2*(1+MT^2/(2*MV3^2))/(24*Pi), 
+      TeX           -> Subscript[W,V1], 
+      Description   -> "V1 width"
+    },
+
+    WV2 == { 
+      ParameterType -> Internal, 
+      Value         -> MV3*(Abs[y13^2]+Abs[y23^2]+Abs[y33^2])*(1 - MT^2/MV3^2)^2*(1+MT^2/(2*MV3^2))/(48*Pi) + MV3*Abs[y13^2]/(48*Pi), 
+      TeX           -> Subscript[W,V2], 
+      Description   -> "V2 width"
+    },
+
+    WV3 == { 
+      ParameterType -> Internal, 
+      Value         -> MV3*(Abs[y13^2]+Abs[y23^2]+Abs[y33^2])/(24*Pi), 
+      TeX           -> Subscript[W,V3], 
+      Description   -> "V3 width"
+    },
+
+    (*gluon prime width*)
+    Wgp == { 
+    ParameterType -> Internal, 
+    Value         -> MV3*(Abs[y13^2]+Abs[y23^2]+Abs[y33^2])/(24*Pi), 
+    TeX           -> Subscript[W,gp], 
+    Description   -> "gluon prime width"
+    }
+
+
+};
+
+
+
+M$ClassesDescription = {
+
+   V[100] == {ClassName -> V1,
+       SelfConjugate -> False,
+       Indices -> {Index[Colour]},
+       Mass ->    {MV3, Internal},
+       Width ->   {WV1, Internal},
+       QuantumNumbers -> {Q -> 5/3, LeptonNumber -> -1},
+       PropagatorLabel -> "V1",
+       PropagatorType -> C,
+       PropagatorArrow -> None,
+       PDG -> 1100,
+       FullName -> "vector LQ triplet V1" 
+        },
+
+   V[101] == {ClassName -> V2,
+ 	     SelfConjugate -> False,
+	     Indices -> {Index[Colour]},
+	     Mass ->    {MV3, Internal},
+ 	     Width ->   {WV2, Internal},
+	     QuantumNumbers -> {Q -> 2/3, LeptonNumber -> -1},
+	     PropagatorLabel -> "V2",
+	     PropagatorType -> C,
+	     PropagatorArrow -> None,
+	     PDG -> 1101,
+	     FullName -> "vector LQ triplet V2" 
+ 	      },
+
+   V[102] == {ClassName -> V3,
+       SelfConjugate -> False,
+       Indices -> {Index[Colour]},
+       Mass ->    {MV3, Internal},
+       Width ->   {WV3, Internal},
+       QuantumNumbers -> {Q -> -1/3, LeptonNumber -> -1},
+       PropagatorLabel -> "V3",
+       PropagatorType -> C,
+       PropagatorArrow -> None,
+       PDG -> 1103,
+       FullName -> "vector LQ triplet V3" 
+        },
+
+   V[110] == {ClassName -> gp,
+        SelfConjugate -> True,
+        Indices -> {Index[Gluon]},
+        Mass ->  {Mgp, 1000},
+        Width ->   {Wgp, Internal},
+        PropagatorLabel -> "gp",
+        PropagatorType -> C,
+        PropagatorArrow -> None,
+        PDG -> 1210,
+        FullName -> "gluon prime" 
+          }
+
+};
+
+
+(* the Lagrangian *)
+
+(* kinetic term of LQ*)
+LvlqKin := -1/2((DC[V1bar[mu,k],nu]+I gs gp[nu,aa] T[aa,l,k] V1bar[mu,l])-(DC[V1bar[nu,k],mu]+I gs gp[mu,aa] T[aa,l,k] V1bar[nu,l]))((DC[V1[mu,k],nu]-I gs gp[nu,aa] T[aa,k,l] V1[mu,l])-(DC[V1[nu,k],mu]-I gs gp[mu,aa] T[aa,k,l] V1[nu,l])) -1/2((DC[V2bar[mu,k],nu]+I gs gp[nu,aa] T[aa,l,k] V2bar[mu,l])-(DC[V2bar[nu,k],mu]+I gs gp[mu,aa] T[aa,l,k] V2bar[nu,l]))((DC[V2[mu,k],nu]-I gs gp[nu,aa] T[aa,k,l] V2[mu,l])-(DC[V2[nu,k],mu]-I gs gp[mu,aa] T[aa,k,l] V2[nu,l])) -1/2((DC[V3bar[mu,k],nu]+I gs gp[nu,aa] T[aa,l,k] V3bar[mu,l])-(DC[V3bar[nu,k],mu]+I gs gp[mu,aa] T[aa,l,k] V3bar[nu,l]))((DC[V3[mu,k],nu]-I gs gp[nu,aa] T[aa,k,l] V3[mu,l])-(DC[V3[nu,k],mu]-I gs gp[mu,aa] T[aa,k,l] V3[nu,l])) + MV3^2 (V1bar[mu,k]V1[mu,k]+ V2bar[mu,k]V2[mu,k]+ V3bar[mu,k]V3[mu,k]) -I (1+tkappa) gs FS[G,mu,nu,a] (V1bar[mu,k] T[a,k,l] V1[nu,l] + V2bar[mu,k] T[a,k,l] V2[nu,l] + V3bar[mu,k] T[a,k,l] V3[nu,l]);
+
+(* kinetic term of gluon prime*)
+LgpKin := - 1/4 (DC[gp[nu,aa],mu]-DC[gp[mu,aa],nu])*(DC[gp[nu,aa],mu]-DC[gp[mu,aa],nu]) + 1/2 Mgp^2 gp[mu,aa]gp[mu,aa] - I (1+xkappa) gs (DC[gp[nu,aa],mu]-DC[gp[mu,aa],nu]) (V1bar[mu,k] T[aa,k,l] V1[nu,l] + V2bar[mu,k] T[aa,k,l] V2[nu,l] + V3bar[mu,k] T[aa,k,l] V3[nu,l]) - gs gp[mu,aa] ( ubar[s,k] Ga[mu,s,r] T[aa,k,l] u[r,l] + dbar[s,k] Ga[mu,s,r] T[aa,k,l] d[r,l] + sbar[s,k] Ga[mu,s,r] T[aa,k,l] s[r,l] + cbar[s,k] Ga[mu,s,r] T[aa,k,l] c[r,l] + bbar[s,k] Ga[mu,s,r] T[aa,k,l] b[r,l] ) ;
+
+(*interaction term*)
+Lvlqfermions  :=  y13 V1[mu,k] tbar[s,k] Ga[mu,s,r] ProjM[r,t] e[t] + (y13/Sqrt[2]) (V2[mu,k] tbar[s,k] Ga[mu,s,r] ProjM[r,t] ve[t] -  V2[mu,k] bbar[s,k] Ga[mu,s,r] ProjM[r,t] e[t]) + y13 V3[mu,k] bbar[s,k] Ga[mu,s,r] ProjM[r,t] ve[t] + y23 V1[mu,k] tbar[s,k] Ga[mu,s,r] ProjM[r,t] mu[t] + (y23/Sqrt[2]) (V2[mu,k] tbar[s,k] Ga[mu,s,r] ProjM[r,t] vm[t] -  V2[mu,k] bbar[s,k] Ga[mu,s,r] ProjM[r,t] mu[t]) + y23 V3[mu,k] bbar[s,k] Ga[mu,s,r] ProjM[r,t] vm[t] + y33 V1[mu,k] tbar[s,k] Ga[mu,s,r] ProjM[r,t] ta[t] + (y33/Sqrt[2]) (V2[mu,k] tbar[s,k] Ga[mu,s,r] ProjM[r,t] vt[t] -  V2[mu,k] bbar[s,k] Ga[mu,s,r] ProjM[r,t] ta[t]) + y33 V3[mu,k] bbar[s,k] Ga[mu,s,r] ProjM[r,t] vt[t];
+
+Llq :=  LvlqKin + LgpKin + Lvlqfermions + HC[Lvlqfermions];
+
+
+
+
+
+
