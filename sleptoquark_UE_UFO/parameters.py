@@ -1,6 +1,6 @@
 # This file was automatically created by FeynRules 2.3.36
 # Mathematica version: 12.0.0 for Linux x86 (64-bit) (April 7, 2019)
-# Date: Tue 18 Jan 2022 23:49:26
+# Date: Mon 12 Dec 2022 11:11:34
 
 
 
@@ -121,13 +121,13 @@ ymtau = Parameter(name = 'ymtau',
                   lhablock = 'YUKAWA',
                   lhacode = [ 15 ])
 
-MS = Parameter(name = 'MS',
-               nature = 'external',
-               type = 'real',
-               value = 1000.,
-               texname = '\\text{MS}',
-               lhablock = 'FRBlock',
-               lhacode = [ 1 ])
+MLQ = Parameter(name = 'MLQ',
+                nature = 'external',
+                type = 'real',
+                value = 1000.,
+                texname = '\\text{MLQ}',
+                lhablock = 'FRBlock',
+                lhacode = [ 1 ])
 
 Yue = Parameter(name = 'Yue',
                 nature = 'external',
@@ -265,6 +265,14 @@ MD = Parameter(name = 'MD',
                lhablock = 'MASS',
                lhacode = [ 1 ])
 
+MS = Parameter(name = 'MS',
+               nature = 'external',
+               type = 'real',
+               value = 0.101,
+               texname = '\\text{MS}',
+               lhablock = 'MASS',
+               lhacode = [ 3 ])
+
 MB = Parameter(name = 'MB',
                nature = 'external',
                type = 'real',
@@ -390,7 +398,7 @@ CKM3x3 = Parameter(name = 'CKM3x3',
 WS = Parameter(name = 'WS',
                nature = 'internal',
                type = 'real',
-               value = '(MS*(1 - MT**2/MS**2)**2*(abs(Yte)**2 + abs(Ytmu)**2 + abs(Ytta)**2))/(16.*cmath.pi) + (MS*(abs(Yce)**2 + abs(Ycmu)**2 + abs(Ycta)**2 + abs(Yue)**2 + abs(Yumu)**2 + abs(Yuta)**2))/(16.*cmath.pi)',
+               value = '(MLQ*(1 - MT**2/MLQ**2)**2*(abs(Yte)**2 + abs(Ytmu)**2 + abs(Ytta)**2))/(16.*cmath.pi) + (MLQ*(abs(Yce)**2 + abs(Ycmu)**2 + abs(Ycta)**2 + abs(Yue)**2 + abs(Yumu)**2 + abs(Yuta)**2))/(16.*cmath.pi)',
                texname = 'W_S')
 
 MW = Parameter(name = 'MW',

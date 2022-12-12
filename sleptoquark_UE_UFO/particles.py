@@ -1,6 +1,6 @@
 # This file was automatically created by FeynRules 2.3.36
 # Mathematica version: 12.0.0 for Linux x86 (64-bit) (April 7, 2019)
-# Date: Tue 18 Jan 2022 23:49:26
+# Date: Mon 12 Dec 2022 11:11:34
 
 
 from __future__ import division
@@ -390,7 +390,7 @@ S1 = Particle(pdg_code = 1000,
               antiname = 'S1~',
               spin = 1,
               color = 3,
-              mass = Param.MS,
+              mass = Param.MLQ,
               width = Param.WS,
               texname = 'S1',
               antitexname = 'S1~',
