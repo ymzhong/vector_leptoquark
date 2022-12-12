@@ -23,7 +23,7 @@ M$Parameters = {
 
     (*leptoquark mass*)
 
-    MS == { 
+    MLQ == { 
         ParameterType -> External,
         Value         -> 1000.0,
         Description   -> "LQ mass"
@@ -114,7 +114,7 @@ M$Parameters = {
 
       WS == { 
       ParameterType -> Internal, 
-      Value         -> MS*(Abs[yte^2]+Abs[ytmu^2]+Abs[ytta^2])*(1 - MT^2/MS^2)^2/(16*Pi) + MS*(Abs[yce^2]+Abs[ycmu^2]+Abs[ycta^2]+Abs[yue^2]+Abs[yumu^2]+Abs[yuta^2])/(16*Pi), 
+      Value         -> MLQ*(Abs[yte^2]+Abs[ytmu^2]+Abs[ytta^2])*(1 - MT^2/MLQ^2)^2/(16*Pi) + MLQ*(Abs[yce^2]+Abs[ycmu^2]+Abs[ycta^2]+Abs[yue^2]+Abs[yumu^2]+Abs[yuta^2])/(16*Pi), 
       TeX           -> Subscript[W,S], 
       Description   -> "LQ width"
     	}
@@ -126,7 +126,7 @@ M$ClassesDescription = {
    S[100] == {ClassName -> S1,
        SelfConjugate -> False,
        Indices -> {Index[Colour]},
-       Mass ->    {MS, Internal},
+       Mass ->    {MLQ, Internal},
        Width ->   {WS, Internal},
        QuantumNumbers -> {Q -> -1/3, LeptonNumber -> 1},
        PropagatorLabel -> "S1",
@@ -139,7 +139,7 @@ M$ClassesDescription = {
 
 (* the Lagrangian *)
 
-LlqKin := DC[S1bar[k], mu]DC[S1[k],mu] 	-   MS^2 S1bar[k]S1[k];
+LlqKin := DC[S1bar[k], mu]DC[S1[k],mu] 	-   MLQ^2 S1bar[k]S1[k];
 
 
 LlqYuk  :=  yue S1bar[k] anti[CC[u]][s,k] ProjP[s,r] e[r] + yumu S1bar[k] anti[CC[u]][s,k] ProjP[s,r] mu[r] + yuta S1bar[k] anti[CC[u]][s,k] ProjP[s,r] ta[r] + yce S1bar[k] anti[CC[c]][s,k] ProjP[s,r] e[r] + ycmu S1bar[k] anti[CC[c]][s,k] ProjP[s,r] mu[r] + ycta S1bar[k] anti[CC[c]][s,k] ProjP[s,r] ta[r] + yte S1bar[k] anti[CC[t]][s,k] ProjP[s,r] e[r] + ytmu S1bar[k] anti[CC[t]][s,k] ProjP[s,r] mu[r] + ytta S1bar[k] anti[CC[t]][s,k] ProjP[s,r] ta[r];
