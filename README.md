@@ -11,6 +11,6 @@ The model [sleptoquark_UE_UFO](./sleptoquark_UE_UFO) contains a scalar leptoquar
 
 Please acknowledge [JHEP 10 (2017) 097](https://link.springer.com/article/10.1007/JHEP10(2017)097) and [JHEP 01 (2019) 132](https://link.springer.com/article/10.1007%2FJHEP01%282019%29132) if you used the repository models.
 
-For any questions on the models, please contact Martin Schmaltz (schmaltz@bu.edu) or Yiming Zhong (ymzhong@kicp.uchicago.edu).
+For any questions on the models, please contact Martin Schmaltz (schmaltz@bu.edu) or Yiming Zhong (yiming.zhong@cityu.edu.hk).
 
 <a>[1]</a>: ``xkappa`` is denoted as ``kappa_s`` in equation C.5 of [JHEP 10 (2017) 097](https://link.springer.com/article/10.1007/JHEP10(2017)097).
